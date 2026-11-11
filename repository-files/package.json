@@ -1,0 +1,28 @@
+{
+  "name": "shellwork",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first software runtime with Solana component licensing and settlement",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "verify": "node scripts/verify.mjs",
+    "demo": "node examples/demo.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  },
+  "overrides": {
+    "tmp": "0.2.7"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "@solana/web3.js": "^1.99.0",
+    "buffer": "^6.0.3"
+  }
+}

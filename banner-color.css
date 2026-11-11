@@ -1,0 +1,9 @@
+.ca-banner .ca-value span,
+.ca-banner .ca-value b {
+  color: #b9ff63;
+}
+
+.repo-head .mark {
+  overflow: hidden;
+  background: #000;
+}
