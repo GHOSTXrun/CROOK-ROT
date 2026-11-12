@@ -1,4 +1,4 @@
-﻿const desk = document.querySelector('.desk');
+const desk = document.querySelector('.desk');
 const viewport = document.querySelector('.desk-viewport');
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -18,12 +18,14 @@ const names = agents.map(a => a.querySelector('h3').textContent);
 const bootLog = $('.log-entries').innerHTML;
 const stageCopy = agents.map(a => a.querySelector('strong').textContent);
 const replayEvents = NIGHT_REPLAY.events;
+const PLAYBACK_SPEED = 4;
+const SIMULATION_SECONDS_PER_SECOND = 120 * PLAYBACK_SPEED;
 $('.running').lastChild.textContent = ' · ';
 const clock = document.createElement('time');
 $('.running').append(clock);
 const controls = document.createElement('div');
 controls.className = 'demo-controls';
-controls.innerHTML = '<span class="demo-label">STORY REPLAY · 120×</span><button type="button" class="pause-demo">PAUSE</button><button type="button" class="full-log">FULL LOG</button><button type="button" class="show-result">07:00 RESULT</button><button type="button" class="reset-demo" aria-label="Restart replay from 60 dollars">↻ RESET</button>';
+controls.innerHTML = '<span class="demo-label">STORY REPLAY · 4× SPEED</span><button type="button" class="pause-demo">PAUSE</button><button type="button" class="full-log">FULL LOG</button><button type="button" class="show-result">07:00 RESULT</button><button type="button" class="reset-demo" aria-label="Restart replay from 60 dollars">↻ RESET</button>';
 $('.desk-footer').before(controls);
 $('.desk-footer').firstElementChild.textContent = 'reconstructed narrative · exceptional result · not typical';
 $('.live').innerHTML = '<i></i>REPLAY';
@@ -245,7 +247,7 @@ function animate(now) {
   if(previousTime===undefined)previousTime=now;
   const delta=Math.min((now-previousTime)/1000,.1);previousTime=now;
   if(!paused&&!document.hidden){
-    state.elapsed=Math.min(28800,state.elapsed+delta*120);
+    state.elapsed=Math.min(28800,state.elapsed+delta*SIMULATION_SECONDS_PER_SECOND);
     while(state.eventIndex<replayEvents.length&&replayEvents[state.eventIndex].at<=state.elapsed)step();
     paintClock();if(state.elapsed>=28800)setPaused(true);
   }

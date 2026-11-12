@@ -46,6 +46,7 @@ function esc(value){return value.replace(/[&<>"']/g,function(ch){return{"&":"&am
 function ext(name){const part=name.split(".").pop();return part===name?"FILE":part.toUpperCase()}
 
 function drawTree(){
+  if(!tree)return;
   tree.innerHTML="";
   files.forEach(function(item){
     const row=document.createElement("button");
