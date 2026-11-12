@@ -101,3 +101,15 @@ copy.onclick=async function(){
 
 drawTree();
 openFile(files.find(function(item){return item.path==="repository-files/src/kernel.js"}));
+
+const workspaceTabs = [document.querySelector('#dashboardTab'), document.querySelector('#sourceTab')];
+workspaceTabs.forEach(function (tab, index) {
+  tab.addEventListener('click', function () {
+    workspaceTabs.forEach(function (button) {
+      const selected = button === tab;
+      button.classList.toggle('selected', selected);
+      button.setAttribute('aria-selected', String(selected));
+      document.getElementById(button.getAttribute('aria-controls')).hidden = !selected;
+    });
+  });
+});

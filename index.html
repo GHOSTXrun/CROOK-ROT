@@ -104,7 +104,16 @@
     </section>
   </aside>
 
-  <main class="workspace">
+  <section class="right-column" aria-label="Dashboard and source workspace">
+    <nav class="workspace-tabs" aria-label="Workspace views">
+      <button type="button" id="dashboardTab" class="selected" aria-selected="true" aria-controls="dashboardPanel">◫ GROK BOT <span>v6 · night</span></button>
+      <button type="button" id="sourceTab" aria-selected="false" aria-controls="sourcePanel">⌘ SOURCE</button>
+      <a href="./grok-dashboard.html" target="_blank" rel="noopener" aria-label="Open dashboard in a new tab">↗</a>
+    </nav>
+    <div id="dashboardPanel" class="dashboard-panel">
+      <iframe src="./grok-dashboard.html?embed=1" title="GROK BOT night desk reference dashboard" class="grok-frame"></iframe>
+    </div>
+  <main class="workspace" id="sourcePanel" hidden>
     <header class="work-head">
       <div class="lights"><i></i><i></i><i></i></div>
       <div id="currentPath">src / kernel.js</div>
@@ -114,6 +123,7 @@
     <div class="code-scroll" id="codeScroll"><pre id="codeView"><code>Loading source…</code></pre></div>
     <footer class="work-foot"><span>Shellwork Runtime V2</span><span id="loadState">READING OBJECT</span></footer>
   </main>
+  </section>
 </div>
 <script src="./repository.js"></script>
 </body>

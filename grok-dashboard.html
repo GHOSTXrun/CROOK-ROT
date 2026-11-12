@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GROK BOT — night desk</title>
+  <link rel="stylesheet" href="./grok-dashboard.css">
+</head>
+<body>
+<div class="desk-viewport">
+<main class="desk" aria-label="Grok Bot reference dashboard">
+  <header class="window-bar">
+    <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    <span>grok-bot — night.desk — six agents — log first</span>
+    <span class="live"><i></i>LIVE</span>
+  </header>
+  <div class="ticker" aria-label="Token ticker">
+    <span>$FROTH <b>▲18.1%</b></span><span>$SPRUNK <b>▲8.9%</b></span><span>$GLIMR <b>▲33.1%</b></span><span>$MURKO <b>▲22.2%</b></span><span>$NUBBY <b class="down">▼7.5%</b></span><span>$BOINK <b>▲13.6%</b></span>
+  </div>
+  <div class="desk-content">
+    <section class="overview" aria-label="Bot status and balance">
+      <button class="bot-icon" type="button" aria-label="Pause dashboard animation" aria-pressed="false"><span></span><span></span></button>
+      <div class="bot-heading">
+        <div class="bot-title"><h1>GROK BOT</h1><span class="version">v6 · night</span></div>
+        <div class="running"><i></i><span id="runningLabel">RUNNING</span> · 23:00:00</div>
+        <p>6 agents · one job each · 0 lines hand-written</p>
+        <div class="you"><b>YOU</b> asleep · 0 inputs</div>
+      </div>
+      <div class="balance"><h2>BALANCE</h2><strong>$60.00</strong><p>start $60.00 at 23:00 · <b>×1.0</b></p><div class="metrics"><span>W <b>0</b></span><span>L <b>0</b></span><span>WIN <b>0.0%</b></span><span>TRADES <b>0</b></span></div></div>
+    </section>
+    <div class="timeline"><span>23:00</span><div class="timeline-track"><i></i></div><span>07:00</span><strong>23:00:00</strong></div>
+    <section class="panel pipeline">
+      <header class="panel-heading"><h2>AGENT PIPELINE</h2><span>scanner → rug check → sizer → executor → logger → equity</span></header>
+      <div class="agents">
+        <article class="agent scanner"><h3>SCANNER</h3><p>new pairs·spikes</p><strong>seen 0</strong></article>
+        <article class="agent rug active"><h3>RUG CHECK</h3><p>filters rugs</p><strong>blocked 0</strong></article>
+        <article class="agent sizer"><h3>SIZER</h3><p>sizes off equity</p><strong>idle</strong></article>
+        <article class="agent executor"><h3>EXECUTOR</h3><p>enters + slip</p><strong>flat</strong></article>
+        <article class="agent logger"><h3>LOGGER</h3><p>reason per trade</p><strong>line #12</strong></article>
+        <article class="agent equity"><h3>EQUITY</h3><p>every close</p><strong>$60.00</strong></article>
+      </div>
+      <div class="pipeline-flow" aria-label="PLONK passing through agent pipeline"><div class="flow-line"></div><i></i><i></i><i></i><i></i><i></i><i></i><span>$PLONK</span></div>
+    </section>
+    <div class="middle-grid">
+      <section class="panel curve"><header class="panel-heading"><h2>EQUITY CURVE · LOG SCALE</h2><b>×1.0</b></header>
+        <svg viewBox="0 0 530 231" role="img" aria-label="Equity curve starts at 60 dollars at 23:00, with no closed trades">
+          <g class="grid-lines"><path d="M47 9H516M47 74H516M47 139H516M47 204H516"/></g>
+          <g class="chart-labels"><text x="0" y="14">$10K</text><text x="7" y="79">$1K</text><text x="7" y="144">$100</text><text x="14" y="209">$10</text><text x="17" y="226">23:00</text><text x="137" y="226">01:00</text><text x="258" y="226">03:00</text><text x="378" y="226">05:00</text><text x="482" y="226">07:00</text></g>
+          <path class="equity-baseline" d="M37 154H516"/><circle class="chart-halo" cx="37" cy="154" r="12"/><circle class="chart-point" cx="37" cy="154" r="5"/>
+        </svg>
+      </section>
+      <section class="panel trace"><header class="panel-heading"><h2>WHY · TRACE LAST TRADE</h2><span class="waiting">WAITING</span></header><div class="trade-empty"><b>—</b><span>—</span></div><p class="pending">first close pending</p><dl><div><dt>trigger</dt><dd>…</dd></div><div><dt>rug</dt><dd>…</dd></div><div><dt>size</dt><dd>…</dd></div><div><dt>fill</dt><dd>…</dd></div><div><dt>exit</dt><dd>…</dd></div></dl></section>
+    </div>
+    <div class="bottom-grid">
+      <section class="panel log"><header class="panel-heading"><h2>$ tail -f decisions.log<span class="cursor">▌</span></h2><span>line #12</span></header>
+        <ol class="log-entries">
+          <li class="highlight"><time>23:00</time><span class="boot">BOOT</span><div><div class="log-title"><strong>SCANNER</strong><b>online</b></div><p>reason: listening for new pairs</p></div></li>
+          <li><time>23:00</time><span class="boot">BOOT</span><div><div class="log-title"><strong>RUG CHECK</strong><b>online</b></div><p>reason: LP · mint · top10 · dev wallet</p></div></li>
+          <li><time>23:00</time><span class="boot">BOOT</span><div><div class="log-title"><strong>SIZER</strong><b>online</b></div><p>reason: size from equity, cap 50%</p></div></li>
+          <li><time>23:00</time><span class="boot">BOOT</span><div><div class="log-title"><strong>EXECUTOR</strong><b>online</b></div><p>reason: slippage cap 2.0%</p></div></li>
+          <li><time>23:00</time><span class="boot">BOOT</span><div><div class="log-title"><strong>LOGGER</strong><b>online</b></div><p>reason: no trade without a reason</p></div></li>
+          <li><time>23:00</time><span class="boot">BOOT</span><div><div class="log-title"><strong>EQUITY</strong><b>$60.00</b></div><p>reason: curve · start balance loaded</p></div></li>
+        </ol>
+      </section>
+      <div class="stats-stack"><section class="panel win"><header class="panel-heading"><h2>WIN RATE</h2></header><div class="win-content"><div class="win-ring"><strong>0.0%</strong></div><div class="win-totals"><b>W 0</b><b>L 0</b><p>0 closes</p></div></div></section><section class="panel best"><header class="panel-heading"><h2>BEST TRADE · ONE BUY</h2></header><strong>+$0.00</strong><p>waiting for a close</p></section></div>
+    </div>
+    <footer class="desk-footer"><span>single result · not typical · not financial advice</span><span>one night · 23:00 → 07:00</span></footer>
+  </div>
+</main>
+</div>
+<script src="./grok-dashboard.js"></script>
+</body>
+</html>
