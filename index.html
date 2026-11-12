@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Shellwork — a composable computer system built on Solana.">
-  <title>Shellwork / Source</title>
+  <meta name="description" content="Grok Bot night shift: six agents, 82 trades, and a decision log behind every close.">
+  <title>GROK BOT / The Night Shift</title>
   <link rel="icon" type="image/png" href="./shellwork-logo.png">
-  <link rel="stylesheet" href="./repository.css?v=shellwork-logo-2">
+  <link rel="stylesheet" href="./repository.css?v=night-story-3">
   <link rel="stylesheet" href="./banner-color.css?v=shellwork-logo-2">
 </head>
 <body>
@@ -22,85 +22,55 @@
     <section class="explorer">
       <header class="repo-head">
         <span class="mark"><img src="./shellwork-logo.png" alt=""></span>
-        <div><small>SHELLWORK / SOLANA</small><h1>shellwork</h1></div>
+        <div><small>GROK BOT / SOURCE</small><h1>night.shift</h1></div>
         <div class="repo-actions">
           <em>PUBLIC</em>
-          <a class="download-source" href="https://github.com/zunonhood/nockwork/archive/refs/heads/main.zip" aria-label="Download the complete Shellwork source code as a ZIP file">DOWNLOAD SOURCE .ZIP</a>
+          <a class="download-source" href="https://github.com/GHOSTXrun/CROOK-ROT/archive/refs/heads/main.zip" aria-label="Download the complete Shellwork source code as a ZIP file">DOWNLOAD SOURCE .ZIP</a>
           <a class="open-system" href="./system/">OPEN SYSTEM V2</a>
         </div>
       </header>
       <div class="repo-meta"><span><i></i>main</span><span>v2.0.0</span><span>Solana source</span></div>
       <nav id="fileTree" class="tree" aria-label="Project files"></nav>
-      <footer class="repo-foot"><span>HEAD</span><span>4f2c9a1</span><span>CHAIN-NATIVE COMPUTER</span></footer>
+      <footer class="repo-foot"><span>HEAD</span><span>4f2c9a1</span><span>SIX AGENTS / LOG FIRST</span></footer>
     </section>
 
-    <section class="notes">
-      <div class="label"><span>01</span> A NOTE FROM THE BUILDER</div>
-      <p class="lead">I am building a new kind of computer system on top of Solana—one where applications, agents, storage, compute, licenses, and other parts of the system can be owned, exchanged, and recombined by the people who use them.</p>
-
-      <h3>WHY I STARTED</h3>
-      <p>Computers are called personal, but most of their important relationships are no longer personal. Our applications depend on company accounts. Our purchases can become inaccessible. Our files are pushed into services we do not control. A useful tool can disappear because a platform changes its rules, shuts down, or decides that our device is too old.</p>
-      <p>I do not think every company is malicious, and I do not believe blockchain automatically fixes these problems. I simply think we should be able to build another option: a computer where ownership is visible, permissions are understandable, and software can continue to exist beyond the company that first published it.</p>
-      <p>This idea began with a simple question. If a computer is made from many replaceable parts, why are the parts inside its software so difficult to own, exchange and recombine?</p>
-
-      <h3>THE SIMPLE VERSION</h3>
-      <p class="plain">Shellwork is a computer environment with its own internal market. It is not a shop for laptops or graphics cards. What people exchange inside it are digital parts of the system itself.</p>
-      <p>Those parts might be an application, an AI agent, a visual desktop, a month of encrypted storage, access to specialized computing power, a professional tool, an automation workflow, or a license that allows a component to run on your machine.</p>
-      <p>You could buy a component, rent it for a project, subscribe to its updates, resell a transferable license, or support the developer directly. The system would verify what you own and load the component without forcing you to depend on a single app store.</p>
-
-      <div class="label project"><span>02</span> WHAT THE PROJECT IS</div>
-      <h2>A local-first computer system with an economy built into its architecture.</h2>
-      <p>The project has three connected layers. The first is a familiar computer interface where people open files, use tools and manage their work. The second is a secure runtime that isolates components and controls what each one is allowed to access. The third is Solana, which records ownership, licenses, payments and the history of published components.</p>
-      <p>The computer does not run “inside” the blockchain. Code execution, private files and everyday interaction stay on the user's device whenever possible. Solana sits underneath the experience as the shared ownership and settlement layer.</p>
-
-      <h3>WHY SOLANA</h3>
-      <p>Solana programs store component records, listings and time-limited licenses in program-derived accounts. Purchases settle in SOL while the local runtime keeps code and private files on the user device.</p>
-      <p>Shellwork uses Solana for shared ownership and settlement. The browser connects to a Solana wallet, and the runtime checks account state and the component code hash before loading software.</p>
-
-      <h3>HOW A COMPONENT ENTERS THE SYSTEM</h3>
-      <ol>
-        <li>A developer publishes a component and a cryptographic fingerprint of its code.</li>
-        <li>The developer defines its price, license rules, update policy and required permissions.</li>
-        <li>A user buys, rents or receives the right to use that component.</li>
-        <li>The local system verifies the license and code fingerprint through Solana.</li>
-        <li>The runtime loads the component inside a restricted environment.</li>
-        <li>Payment and royalties are settled automatically according to the published rules.</li>
-      </ol>
-
-      <h3>WHAT CAN BE EXCHANGED</h3>
-      <p>Applications, plugins, AI agents, interface modules, storage plans, compute credits, datasets with clear usage rights, automation recipes, game content and transferable software licenses could all become system objects.</p>
-
-      <h3>WHAT MUST NEVER BECOME A MARKET</h3>
-      <p>Ownership must have limits. A person's identity, private keys, personal files, recovery rights and fundamental access to their own machine should never be commodities. No purchased module should be able to silently sell private information or take control of another component. The economy exists to serve the computer's owner—not to turn the owner into the product.</p>
-
-      <h3>DESIGN PRINCIPLES</h3>
-      <ul>
-        <li><b>User sovereignty.</b> Core identity and personal data cannot be revoked by a vendor.</li>
-        <li><b>Explicit capability boundaries.</b> Every module declares what it can read, change and transmit.</li>
-        <li><b>Local-first execution.</b> Owning a component does not force private work onto a public chain.</li>
-        <li><b>Developer continuity.</b> Creators can publish, version and earn without locking users into one storefront.</li>
-        <li><b>Replaceable parts.</b> No system module should become an irreplaceable gatekeeper.</li>
-      </ul>
-
-      <h3>WHAT THE FUTURE COULD LOOK LIKE</h3>
-      <p>Imagine opening a new computer and signing in with an identity you control. Your workspace reconstructs itself from a private manifest. The tools you own appear, your preferred interface loads, and every component clearly shows who built it, what it can access and whether its license can be transferred.</p>
-      <p>A designer could rent an expensive rendering module for one afternoon. A small developer could publish a useful system tool and receive payment each time a license changes hands. A community could maintain an abandoned application without losing its users. An AI agent could purchase a limited amount of compute through a session permission without receiving control of the owner's wallet.</p>
-      <p>Eventually, Shellwork could become a shared protocol rather than one company's operating system: many interfaces, many runtimes and many marketplaces using the same open component standard. Users could leave one implementation and carry their legitimate software rights into another.</p>
-
-      <h3>WHERE THE PROJECT IS TODAY</h3>
-      <p>This is an early architecture project. The repository currently demonstrates the core model: a capability-based kernel, a component registry, a license market and a local runtime. It is not yet a finished operating system, and the Solana program has not been presented as production-ready financial infrastructure.</p>
-      <p>The next serious work is to define the component standard, threat model, permission language and recovery model; deploy and test the Shellwork program on Solana devnet; and build a small local runtime that can install and safely launch one real component from beginning to end.</p>
-
-      <h3>THE QUESTIONS I AM NOT HIDING</h3>
-      <p>How should licenses survive forks? Which rights should never be transferable? How can account recovery work without rebuilding centralized custody? How do we stop speculation from overwhelming usefulness? What is the simplest permission language a non-technical user can genuinely understand?</p>
-      <p>I do not have final answers yet. Those questions are not weaknesses to cover with branding—they are the actual work of building the project responsibly.</p>
-
-      <h3>WHY THIS IS PUBLIC</h3>
-      <p>I am showing the work early because the project should be understandable before it becomes impressive. The code on the right is a concrete description of the direction, not proof that every problem has been solved. I want criticism from developers, designers and ordinary computer users while the foundations can still change.</p>
-      <p>If this succeeds, the blockchain will not be the first thing people notice. They will notice that their tools are portable, their permissions make sense, developers are paid fairly, and their computer continues to belong to them.</p>
-
-      <div class="tags"><span>COMPOSABLE</span><span>USER-OWNED</span><span>LOCAL-FIRST</span><span>PERMISSIONED</span><span>OPEN SOURCE</span></div>
-      <p class="signature">— Shellwork, development note 001</p>
+    <section class="notes night-story" aria-label="The Grok Bot night shift story">
+      <div class="story-eyebrow"><span class="story-status"></span> GROK BOT / THE NIGHT SHIFT <span>23:00 → 07:00</span></div>
+      <h1>I gave Grok Bot <em>$60</em><br>and went to bed.</h1>
+      <p class="story-subtitle">By 7AM, the screen said <strong>$9,684.</strong></p>
+      <p class="story-opening">I opened the trade log before I believed the balance.</p>
+      <div class="story-stats" aria-label="Narrative run results"><div><strong>82</strong><span>CLOSED TRADES</span></div><div><strong>56<span> / 26</span></strong><span>WINNERS / LOSERS</span></div><div><strong>68.3<small>%</small></strong><span>WIN RATE</span></div></div>
+      <div class="story-actions"><button type="button" data-dashboard-action="replay">↻ REPLAY THE NIGHT</button><button type="button" data-dashboard-action="result">07:00 RESULT ↗</button><button type="button" data-dashboard-action="logs">INSPECT THE LOG →</button></div>
+      <p class="replay-caption">Illustrative replay of the supplied story. The sequence is reconstructed; no live funds or verified trade feed is connected.</p>
+      <div class="label project"><span>01</span> SIX AGENTS. ONE JOB EACH.</div>
+      <h2>Here’s how the night shift was split.</h2>
+      <div class="story-agents">
+        <article><span>01</span><div><h3>SCANNER</h3><p>Watched new pairs and volume spikes. Surfaced candidates for the next check.</p></div></article>
+        <article><span>02</span><div><h3>RUG CHECK</h3><p>Screened contracts and blocked <b>85</b>. Mint authority, liquidity and holder checks came before an order.</p></div></article>
+        <article><span>03</span><div><h3>SIZER</h3><p>Calculated each position from current equity. If the position limit was reached, there was no order.</p></div></article>
+        <article><span>04</span><div><h3>EXECUTOR</h3><p>Handled orders and fills. Tracked the position through its exit, including losing trades.</p></div></article>
+        <article><span>05</span><div><h3>LOGGER</h3><p>Recorded entries, exits and reasons. Every closed trade had an explanation attached.</p></div></article>
+        <article><span>06</span><div><h3>EQUITY</h3><p>Tracked the running balance after each close, including the biggest winner: <b>+$3,258.</b></p></div></article>
+      </div>
+      <div class="label project"><span>02</span> THE LOG IS THE PART WORTH WATCHING.</div>
+      <h2>The decisions underneath the number.</h2>
+      <p>The balance grabs your attention. The decisions underneath it are what I wanted to inspect.</p>
+      <div class="decision-examples"><div><code>Mint authority still live?</code><b>BLOCKED</b></div><div><code>Liquidity unlocked?</code><b>BLOCKED</b></div><div><code>Position limit reached?</code><b>NO ORDER</b></div></div>
+      <p>A candidate could make it onto the scanner and still never become a position. The log shows which check stopped it, and why. When a trade did close, its entry, exit and result stayed together.</p>
+      <button class="inline-story-link" type="button" data-dashboard-action="logs">OPEN THE DECISION LOG ↗</button>
+      <div class="label project"><span>03</span> TRACE THE LAST TRADE</div>
+      <article class="snoot-card"><div class="snoot-heading"><h2>$SNOOT</h2><span>CLOSED / TAKE PROFIT</span></div><strong>+$803.22</strong><dl><div><dt>ENTRY TRIGGER</dt><dd>Reclaim after a flush</dd></div><div><dt>HOLD TIME</dt><dd>19 minutes</dd></div><div><dt>EXIT</dt><dd>Take-profit at 2R</dd></div><div><dt>RECORDED PROFIT</dt><dd>+$803.22</dd></div></dl><p>The final trade in the supplied narrative, shown at the end of the replay.</p></article>
+      <div class="label project"><span>04</span> THE LOSSES STAY IN THE LOG.</div>
+      <h2>It still took 26 losses.</h2>
+      <p>More than 3 out of every 10 trades went red. That’s what made me look twice. A 68.3% win rate still leaves 31.7% of closes on the losing side.</p>
+      <div class="outcome-bar" role="img" aria-label="56 winning trades, 26 losing trades"><span></span><span></span></div><div class="outcome-legend"><span>56 WINNERS · 68.3%</span><span>26 LOSERS · 31.7%</span></div>
+      <p>Inspect the losses alongside the winners: what triggered the entry, what limited the position and what ended the trade. A rising balance alone cannot explain the risk taken to get there.</p>
+      <aside class="run-context"><b>ONE RUN. AN EXCEPTIONAL RESULT.</b><p>The supplied story describes a single recorded run, not a typical return. This page reconstructs that narrative as a demonstration. It does not independently verify the trades or predict future results.</p></aside>
+      <div class="label project"><span>05</span> YOUR FIRST HANDOFF</div>
+      <h2>Which part of your trading would you hand over first?</h2>
+      <div class="handoff-options" aria-label="Choose your first handoff"><button type="button" data-handoff="entries" aria-pressed="false"><span>01</span> Finding entries <b>↗</b></button><button type="button" data-handoff="rugs" aria-pressed="false"><span>02</span> Checking rugs <b>↗</b></button><button type="button" data-handoff="exits" aria-pressed="false"><span>03</span> Taking exits <b>↗</b></button></div>
+      <p id="handoffResponse" aria-live="polite" class="handoff-response">Choose a task to see which agent handles it.</p>
+      <p class="signature">GROK BOT · SIX AGENTS · ONE NIGHT · EVERY DECISION HAS A REASON.</p>
     </section>
   </aside>
 
@@ -111,7 +81,7 @@
       <a href="./grok-dashboard.html" target="_blank" rel="noopener" aria-label="Open dashboard in a new tab">↗</a>
     </nav>
     <div id="dashboardPanel" class="dashboard-panel">
-      <iframe src="./grok-dashboard.html?embed=1&v=animated-2" title="GROK BOT night desk reference dashboard" class="grok-frame"></iframe>
+      <iframe src="./grok-dashboard.html?embed=1&v=night-story-3" title="GROK BOT night desk reference dashboard" class="grok-frame"></iframe>
     </div>
   <main class="workspace" id="sourcePanel" hidden>
     <header class="work-head">
@@ -125,6 +95,6 @@
   </main>
   </section>
 </div>
-<script src="./repository.js"></script>
+<script src="./repository.js?v=night-story-3"></script>
 </body>
 </html>

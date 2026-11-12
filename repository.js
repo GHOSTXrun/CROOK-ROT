@@ -59,7 +59,7 @@ function drawTree(){
       if(parent&&!parent.open)row.hidden=true;
       if(item.path===active)row.classList.add("active");
       row.innerHTML='<span class="chev"></span><span class="icon">◇</span><span class="name">'+item.name+'</span><span class="kind">'+ext(item.name)+'</span>';
-      row.onclick=function(){openFile(item)};
+      row.onclick=function(){document.querySelector('#sourceTab').click();openFile(item)};
     }
     tree.appendChild(row);
   });
@@ -113,3 +113,20 @@ workspaceTabs.forEach(function (tab, index) {
     });
   });
 });
+
+function dashboardAction(action) {
+  document.querySelector('#dashboardTab').click();
+  const frame = document.querySelector('.grok-frame');
+  frame.contentWindow.postMessage({ type: 'grok-night-action', action }, location.origin === 'null' ? '*' : location.origin);
+  if (matchMedia('(max-width:820px)').matches) document.querySelector('.right-column').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+document.querySelectorAll('[data-dashboard-action]').forEach(button => button.addEventListener('click', () => dashboardAction(button.dataset.dashboardAction)));
+const handoffCopy = {
+  entries: 'SCANNER finds candidates from new pairs and volume spikes. Each candidate still goes through risk and sizing checks.',
+  rugs: 'RUG CHECK reviews mint authority, liquidity and holders. In this narrative, 85 candidates were blocked before an order.',
+  exits: 'EXECUTOR manages fills and exits. LOGGER keeps the reason attached, including the 26 losing trades.'
+};
+document.querySelectorAll('[data-handoff]').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-handoff]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  document.querySelector('#handoffResponse').textContent = handoffCopy[button.dataset.handoff];
+}));
