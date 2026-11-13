@@ -23,14 +23,14 @@ const SIMULATION_SECONDS_PER_SECOND = 120 * PLAYBACK_SPEED;
 $('.running').lastChild.textContent = ' · ';
 const clock = document.createElement('time');
 $('.running').append(clock);
-const controls = document.createElement('div');
-controls.className = 'demo-controls';
-controls.innerHTML = '<span class="demo-label">STORY REPLAY · 4× SPEED</span><button type="button" class="pause-demo">PAUSE</button><button type="button" class="full-log">FULL LOG</button><button type="button" class="show-result">07:00 RESULT</button><button type="button" class="reset-demo" aria-label="Restart replay from 60 dollars">↻ RESET</button>';
-$('.desk-footer').before(controls);
 $('.desk-footer').firstElementChild.textContent = 'reconstructed narrative · exceptional result · not typical';
-$('.live').innerHTML = '<i></i>REPLAY';
-$('.live').title = 'Reconstructed story replay; intermediate events are illustrative';
-$('.bot-icon').title = 'Pause / resume replay';
+$('.live').innerHTML = '<i></i>LOOP';
+$('.live').title = 'Automatically looping reconstructed narrative';
+const fullLog = document.createElement('button');
+fullLog.type = 'button';
+fullLog.className = 'full-log';
+fullLog.textContent = 'VIEW LOG ↗';
+$('.log .panel-heading').insertBefore(fullLog, $('.log .panel-heading>span'));
 const tickerTrack = document.createElement('div');
 tickerTrack.className = 'ticker-track';
 const tickerHTML = $('.ticker').innerHTML;
@@ -45,7 +45,7 @@ function addPath(className) {
 }
 const area = addPath('equity-area');
 const curve = addPath('equity-line');
-let state, previousTime, paused = false, auditWasPaused = false;
+let state, previousTime, completionHold = 0;
 const money = n => '$' + n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 const signed = n => (n >= 0 ? '+' : '−') + money(Math.abs(n));
 function timeLabel(seconds,full=false) {
@@ -187,14 +187,6 @@ function step() {
   state.elapsed=Math.max(displayTime,event.at);
   paintClock();
 }
-function setPaused(value) {
-  paused=value;desk.classList.toggle('paused',paused);
-  $('.bot-icon').setAttribute('aria-pressed',String(paused));
-  $('.bot-icon').setAttribute('aria-label',paused?'Resume replay':'Pause replay');
-  $('#runningLabel').textContent=state.elapsed>=28800?'COMPLETE':paused?'PAUSED':'RUNNING';
-  $('.pause-demo').textContent=state.elapsed>=28800?'REPLAY':paused?'RESUME':'PAUSE';
-  previousTime=undefined;
-}
 function reset() {
   state={elapsed:0,stage:0,balance:60,balanceCents:6000,wins:0,losses:0,trades:0,best:0,bestToken:'',blocked:0,seen:0,lines:12,eventIndex:0,history:[],points:[{time:0,value:60}]};
   $('.log-entries').innerHTML=bootLog;
@@ -203,25 +195,17 @@ function reset() {
   $('.trade-empty span').classList.remove('negative');
   $$('.trace dd').forEach(n=>n.textContent='…');
   $('.log .panel-heading>span').textContent='line #12';
-  trace('WAITING','first close pending');setPaused(false);paintStats();paintClock();step();
+  trace('WAITING','first close pending');completionHold=0;previousTime=undefined;$('#runningLabel').textContent='RUNNING';paintStats();paintClock();step();
 }
-function showResult() {
-  while(state.eventIndex<replayEvents.length)step();
-  state.elapsed=28800;paintClock();setPaused(true);
-}
-function togglePause(){if(state.elapsed>=28800)reset();else setPaused(!paused)}
-$('.bot-icon').addEventListener('click',togglePause);
-$('.pause-demo').addEventListener('click',togglePause);
-$('.reset-demo').addEventListener('click',reset);
-$('.show-result').addEventListener('click',showResult);
 // The complete reconstructed log stays accessible while the seven-row tail rolls.
 const audit=document.createElement('dialog');
 audit.className='audit-dialog';
 audit.innerHTML='<div class="audit-header"><div><h2>DECISIONS.LOG</h2><p>Reconstructed narrative · intermediate events are illustrative.</p></div><button type="button" class="close-audit" aria-label="Close decision log">✕</button></div><div class="audit-tools"><label>SHOW <select aria-label="Filter decision log"><option value="ALL">All decisions</option><option value="CLOSE">Closed trades</option><option value="BLOCK">Risk blocks</option><option value="SKIP">No order</option></select></label><span class="audit-count"></span></div><div class="audit-scroll"><table><thead><tr><th>TIME</th><th>AGENT</th><th>ACTION</th><th>RESULT</th><th>REASON</th></tr></thead><tbody></tbody></table></div>';
 document.body.append(audit);
+let auditHistory=[];
 function renderAudit() {
   const kind=audit.querySelector('select').value;
-  const entries=state.history.filter(e=>kind==='ALL'||e.kind===kind);
+  const entries=auditHistory.filter(e=>kind==='ALL'||e.kind===kind);
   const body=audit.querySelector('tbody');body.replaceChildren();
   for(const entry of [...entries].reverse()){
     const row=document.createElement('tr');row.dataset.kind=entry.kind;
@@ -230,26 +214,32 @@ function renderAudit() {
   }
   audit.querySelector('.audit-count').textContent=entries.length+' decisions';
 }
-function openAudit(){if(audit.open)return;auditWasPaused=paused;setPaused(true);renderAudit();audit.showModal()}
+function openAudit(){if(audit.open)return;auditHistory=state.history.slice();renderAudit();audit.showModal()}
 $('.full-log').addEventListener('click',openAudit);
 audit.querySelector('.close-audit').addEventListener('click',()=>audit.close());
 audit.querySelector('select').addEventListener('change',renderAudit);
-audit.addEventListener('close',()=>{if(!auditWasPaused&&state.elapsed<28800)setPaused(false)});
+
 window.addEventListener('message',event=>{
   if(event.source!==parent||event.data?.type!=='grok-night-action')return;
   if(location.origin!=='null'&&event.origin!==location.origin)return;
-  if(event.data.action==='replay'){if(audit.open)audit.close();reset()}
-  if(event.data.action==='result'){if(audit.open)audit.close();showResult()}
+
+
   if(event.data.action==='logs')openAudit();
 });
 document.addEventListener('visibilitychange',()=>{previousTime=undefined});
 function animate(now) {
   if(previousTime===undefined)previousTime=now;
   const delta=Math.min((now-previousTime)/1000,.1);previousTime=now;
-  if(!paused&&!document.hidden){
-    state.elapsed=Math.min(28800,state.elapsed+delta*SIMULATION_SECONDS_PER_SECOND);
-    while(state.eventIndex<replayEvents.length&&replayEvents[state.eventIndex].at<=state.elapsed)step();
-    paintClock();if(state.elapsed>=28800)setPaused(true);
+  if(!document.hidden){
+    if(state.elapsed>=28800){
+      completionHold+=delta;
+      if(completionHold>=3)reset();
+    }else{
+      state.elapsed=Math.min(28800,state.elapsed+delta*SIMULATION_SECONDS_PER_SECOND);
+      while(state.eventIndex<replayEvents.length&&replayEvents[state.eventIndex].at<=state.elapsed)step();
+      paintClock();
+      if(state.elapsed>=28800)$('#runningLabel').textContent='COMPLETE';
+    }
   }
   requestAnimationFrame(animate);
 }

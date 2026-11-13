@@ -12,3 +12,6 @@
 
 /* Supplied NOCTRA logo, cropped in its frame without changing the image. */
 .bot-icon{position:relative;overflow:hidden;padding:0;background:#081216;border-color:#8ebd48}.bot-icon img{display:block;flex:none;width:100%;height:100%;object-fit:cover;transform:scale(1.75);pointer-events:none;user-select:none}.desk.paused .bot-icon img{opacity:.85}.bot-title h1{letter-spacing:1px}
+
+/* Automatic loop; the logo is a brand mark rather than a playback control. */
+.bot-icon{cursor:default}.desk-footer{height:59px}.full-log{margin-left:auto;padding:4px 7px;color:#a8bf91;background:#1b2518;border:1px solid #3d4d32;border-radius:4px;cursor:pointer;font:11px Consolas,monospace;white-space:nowrap}.full-log:hover{color:#111;background:#b5ef45}.full-log:focus-visible{outline:2px solid #b5ef45;outline-offset:2px}.log .panel-heading{gap:10px}
